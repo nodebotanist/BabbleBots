@@ -18,4 +18,6 @@ BabbleBots is meant to be a library that allows you to declaratively write a thi
 
 # Versioning
 
+0.0.1 -- Scaffolding set up. exampe files created, build filled out.
+
 0.0.0 -- I have the files set up. Like, the .gitignore and the README. Nothing is here except my goals and the idea (written in JFK after 20 pages of written brainstorming on a plane.)
