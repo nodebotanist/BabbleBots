@@ -22,5 +22,8 @@
   "homepage": "https://github.com/nodebotanist/BabbleBots#readme",
   "devDependencies": {
     "jasmine": "^2.3.2"
+  },
+  "bin": {
+    "babblebots": "lib/main.js"
   }
 }

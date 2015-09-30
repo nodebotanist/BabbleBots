@@ -1,19 +1,18 @@
-{
-	"name": "my-thin-client",
-	"platform": "particle",
-	"devices": [
+module.exports = {
+	name: "rose-thin-client",
+	platform: "photon",
+	components: [
 		{
-			"name": "my-sensor",
-			"type": "analog-sensor",
-			"options": {
-				"pins": ["D0"]
-			}
+			name: "rgb_sensor",
+			type: "[Model number here]"
+			//pins not needed because I2C
 		},
 		{
-			"name": "my-led",
-			"type": "led",
-			"options": {
-				"pins": ["A0"]
+			name: "neopixels",
+			type: "neopixels",
+			pins: ['D3'],
+			options: {
+				length: 7
 			}
 		}
 	]
