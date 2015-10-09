@@ -28,6 +28,9 @@
   },
   "dependencies": {
     "chalk": "^1.1.1",
-    "inquirer": "^0.10.1"
+    "cli-spinner": "^0.2.1",
+    "inquirer": "^0.10.1",
+    "lodash": "^3.10.1",
+    "spark": "^1.0.0"
   }
 }
