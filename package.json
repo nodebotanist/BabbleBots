@@ -24,6 +24,10 @@
     "jasmine": "^2.3.2"
   },
   "bin": {
-    "babblebots": "lib/main.js"
+    "babblebots": "bin/index.js"
+  },
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "inquirer": "^0.10.1"
   }
 }
