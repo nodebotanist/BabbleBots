@@ -3,13 +3,16 @@ var fs = require('fs');
 
 var chalk = require('chalk');
 
-var platform = require('../lib/platform');
+var Platform = require('../lib/platform');
 
 function getBuildInfo(buildPath){
   var build = require(buildPath);
   //determine if given platform is supported
-  if(platform.supported.indexOf(build.platform) === -1){
+  if(!Platform.supported[build.platform]){
     console.error('Platform ' + build.platform + ' is not supported (yet?)');
+  } else {
+    var platform = require(Platform.supported[build.platform]);
+    platform.build(build);
   }
 }
 

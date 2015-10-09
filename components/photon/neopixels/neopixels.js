@@ -1,4 +1,4 @@
-var Platform = require('../../lib/platform');
+var Platform = require('../../../lib/platform');
 
 module.exports = {
   name: 'neopixels',

@@ -27,6 +27,7 @@
     "babblebots": "bin/index.js"
   },
   "dependencies": {
+    "async": "^1.4.2",
     "chalk": "^1.1.1",
     "cli-spinner": "^0.2.1",
     "inquirer": "^0.10.1",
