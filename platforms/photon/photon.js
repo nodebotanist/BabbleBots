@@ -2,6 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var util = require('util');
 var _ = require('lodash');
+var ejs = require('ejs');
 
 var Platform = require('../../lib/platform.js');
 
@@ -12,7 +13,7 @@ var Photon = {
         preInit: '',
         init: '',
         loop: '',
-        functions: ''
+        customFunctions: ''
     }
     //check each component exists
     //check each pin used exists
@@ -21,8 +22,13 @@ var Photon = {
     options.components.forEach(function(component){
         addComponent(component);
     })
-    var appStream = fs.createWriteStream(path.join(process.cwd(), options.dest, 'app.ino'));
-    appStream.write('Hello!');
+    fs.readFile(path.join(__dirname, 'templates/application.tmpl'), function(err, tmpl){
+        console.log(err, tmpl.toString());
+        var appStream = fs.createWriteStream(path.join(process.cwd(), options.dest, 'app.ino'));
+        var template = ejs.compile(tmpl.toString());
+
+        appStream.write(template(map));
+    });
   },
   pins: {
     D0: [Platform.pinType.INPUT, Platform.pinType.OUTPUT, Platform.pinType.PWM, Platform.pinType.SERVO],
@@ -55,7 +61,6 @@ function addComponent(component){
 
     // TODO: Get pin validation working.
     var comp = require(Photon.components[component.type]);
-    console.log(comp);
 
     // for(pin in component.pins){
     //     var pinUsed = Photon.pins[component.pins[pin]];
