@@ -1,6 +1,6 @@
 {
   "name": "babblebots",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "BabbleBots allows you to declaratively generate thin NodeBots clients in appropriate languages for IoT microcontrollers\"",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,6 @@
     "babblebots": "bin/index.js"
   },
   "dependencies": {
-    "async": "^1.4.2",
     "chalk": "^1.1.1",
     "cli-spinner": "^0.2.1",
     "ejs": "^2.3.4",
