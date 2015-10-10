@@ -52,9 +52,9 @@ var Photon = {
     neopixels: 'components/neopixels/neopixels'
   },
   addComponents: function(build){
-    var componentDefinitions = Platform.loadComponentDefinitions(build, Photon);
+    Platform.loadComponentDefinitions(build, Photon);
     // use Platform to check all pins
-    Platform.checkPins(build, Photon, componentDefinitions);    
+    Platform.checkPins(build, Photon);    
     //return registry of components
   }
 }
