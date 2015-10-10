@@ -10,7 +10,7 @@ module.exports = {
     'includes/neopixel.cpp'
   ],
   includes: function(){
-    return ['#include "neopixel.h"', '#include "neopixel.cpp"'];
+    return '#include "neopixel.h"\n#include "neopixel.cpp"\n\n';
   },
   preInit: function(options){
     return 

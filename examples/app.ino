@@ -1,17 +1,19 @@
 #include "application.h"
 
-<%- includes %>
+#include "neopixel.h"
+#include "neopixel.cpp"
+
+
 
 SYSTEM_MODE(AUTOMATIC);
 
-<%- preInit %>
+
 
 void setup(){
-  <%- init %>
+  
 }
 
 void loop(){
-  <%- loop %>
+  
 }
 
-<%- customFunctions %>
