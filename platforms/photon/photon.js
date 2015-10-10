@@ -48,7 +48,7 @@ var Photon = {
     A7: [Platform.pinType.INPUT, Platform.pinType.OUTPUT, Platform.pinType.ANALOG, Platform.pinType.PWM, Platform.pinType.SERVO],
   },
   components: {
-    neopixels: '../../components/photon/neopixels/neopixels'
+    neopixels: './components/neopixels/neopixels'
   }
 }
 

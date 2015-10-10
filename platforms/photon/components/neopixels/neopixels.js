@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var ejs = require('ejs');
 
-var Platform = require('../../../lib/platform');
+var Platform = require('../../../../lib/platform.js');
 
 var Neopixels = {
   name: 'neopixels',
