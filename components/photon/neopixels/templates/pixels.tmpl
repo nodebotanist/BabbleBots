@@ -1,25 +1,3 @@
-#include "application.h"
-
-#include "neopixel.h"
-
-SYSTEM_MODE(AUTOMATIC);
-
-#define PIXEL_PIN D3
-#define PIXEL_COUNT 7
-#define PIXEL_TYPE WS2812
-
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(PIXEL_COUNT, PIXEL_PIN, PIXEL_TYPE);
-
-void setup(){
-	strip.begin();
-	strip.show();
-	Spark.function("pixels", pixels);
-}
-
-void loop(){
-
-}
-
 int pixels(String color){
     int bar = color.indexOf('|');
     String index = color.substring(0, bar);

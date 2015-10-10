@@ -20,10 +20,9 @@ var Photon = {
     //check each pin is used correctly
     //add component to map
     options.components.forEach(function(component){
-        addComponent(component, map);
+        addComponent(component, map, options);
     })
     fs.readFile(path.join(__dirname, 'templates/application.tmpl'), function(err, tmpl){
-        console.log(err, tmpl.toString());
         var appStream = fs.createWriteStream(path.join(process.cwd(), options.dest, 'app.ino'));
         var template = ejs.compile(tmpl.toString());
 
@@ -53,7 +52,7 @@ var Photon = {
   }
 }
 
-function addComponent(component, map){
+function addComponent(component, map, options){
     if(!Photon.components[component.type]){
         console.error('Component file not found for type ' + component.type + '!');
         process.exit(1);
@@ -72,7 +71,11 @@ function addComponent(component, map){
     //     if(Platform.pins[pinUsed].indexOf()
 
     // }
-    map.includes += comp.includes();
+    comp.includes(map, component);
+    comp.preInit(map, component);
+    comp.init(map, component);
+    comp.loop(map, component);
+    comp.customFunctions(map, component);
 }
 
 module.exports = Photon;

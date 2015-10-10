@@ -14,7 +14,8 @@ module.exports = {
 			pins: ['D3'],
 			options: {
 				length: 7,
-				type: 'WS2812'
+				type: 'WS2812',
+				sparkFunctions: ['pixels']
 			}
 		}
 	]
