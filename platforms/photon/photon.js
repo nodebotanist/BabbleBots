@@ -7,6 +7,7 @@ var ejs = require('ejs');
 var Platform = require('../../lib/platform.js');
 
 var Photon = {
+    name: 'photon',
   build: function(options){
     var map = {
         includes: '',
@@ -48,42 +49,12 @@ var Photon = {
     A7: [Platform.pinType.INPUT, Platform.pinType.OUTPUT, Platform.pinType.ANALOG, Platform.pinType.PWM, Platform.pinType.SERVO],
   },
   components: {
-    neopixels: './components/neopixels/neopixels'
+    neopixels: 'components/neopixels/neopixels'
   },
-  addComponents: function(build, platform, buildMap){
-    var pinsUsed = [];
-    build.components.forEach(function(component){
-        //check if component is supported
-        if(!Photon.components[component.type]){
-            console.error('Component file not found for type ' + component.type + '!');
-            process.exit(1);
-        }
-        //require in component definition
-        var componentDefinition = require(Photon.components[component.type]);
-        //check component pins
-        for(pin in componentDefinition.pins){
-            var buildPin = component.pins[pin];
-            if(componentDefinition.pins.hasOwnProperty(pin)){
-                // Does the needed pin exist in the build definition?
-                if(!buildPin){
-                    throw new Error('Pin ' + pin + ' not defined for ' + component.name + '!');
-                }
-                // Does the pin set in the build definition have the correct capability?
-                if(Photon.pins[buildPin].indexOf(componentDefinition.pins[pin]) === -1){
-                    throw new Error('Pin ' + buildPin + ' does not support pin type ' + componentDefinition.pins[pin] + '!');
-                }
-                // Is the pin already in use?
-                if(pinsUsed.indexOf(buildPin) !== -1){
-                    throw new Error('Pin ' + buildPin + 'called for in ' + component.name + ' already in use!');
-                }
-
-                //We're good to go on this pin!
-                pinsUsed.push(buildPin);
-            }
-        }
-        // all pins are clear and checked. We can add the component to the build.
-
-    });
+  addComponents: function(build){
+    var componentDefinitions = Platform.loadComponentDefinitions(build, Photon);
+    // use Platform to check all pins
+    Platform.checkPins(build, Photon, componentDefinitions);    
     //return registry of components
   }
 }
