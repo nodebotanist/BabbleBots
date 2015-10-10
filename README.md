@@ -13,10 +13,12 @@ BabbleBots is meant to be a library that allows you to declaratively write a thi
 
 ## Up Next
 
-* write the first (of many) of the drafts for the JSON schema to define a thin client
-* Start writing tests
+* write a spark upload task
+* write an actual CLI menu
 
 # Versioning
+
+0.1.0 -- Okay. So, it works. For one component and one platform. Probably needs a ton of cleanup. BUT IT WORKS.
 
 0.0.1 -- Scaffolding set up. exampe files created, build filled out.
 
