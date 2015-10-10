@@ -1,26 +1,28 @@
 var fs = require('fs');
+var path = require('path');
 var util = require('util');
 var _ = require('lodash');
-var async = require('async');
 
 var Platform = require('../../lib/platform.js');
 
 var Photon = {
   build: function(options){
     var map = {
-        includes: [],
-        preInit: [],
-        init: [],
-        loop: [],
-        functions: []
+        includes: '',
+        preInit: '',
+        init: '',
+        loop: '',
+        functions: ''
     }
     //check each component exists
     //check each pin used exists
     //check each pin is used correctly
     //add component to map
-    async.each(options.components, addComponent, function(err){
-
-    });
+    options.components.forEach(function(component){
+        addComponent(component);
+    })
+    var appStream = fs.createWriteStream(path.join(process.cwd(), options.dest, 'app.ino'));
+    appStream.write('Hello!');
   },
   pins: {
     D0: [Platform.pinType.INPUT, Platform.pinType.OUTPUT, Platform.pinType.PWM, Platform.pinType.SERVO],
@@ -52,7 +54,8 @@ function addComponent(component){
     }
 
     // TODO: Get pin validation working.
-    var Component = require(Photon.components[component.type]);
+    var comp = require(Photon.components[component.type]);
+    console.log(comp);
 
     // for(pin in component.pins){
     //     var pinUsed = Photon.pins[component.pins[pin]];
@@ -64,7 +67,6 @@ function addComponent(component){
     //     if(Platform.pins[pinUsed].indexOf()
 
     // }
-
 
 }
 

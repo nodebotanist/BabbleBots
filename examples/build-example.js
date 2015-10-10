@@ -1,6 +1,7 @@
 module.exports = {
 	name: "rose-thin-client",
 	platform: "photon",
+	dest: './',
 	components: [
 		// {
 		// 	name: "rgb_sensor",
@@ -12,7 +13,8 @@ module.exports = {
 			type: "neopixels",
 			pins: ['D3'],
 			options: {
-				length: 7
+				length: 7,
+				type: 'WS2812'
 			}
 		}
 	]

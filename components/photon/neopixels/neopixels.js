@@ -5,11 +5,15 @@ module.exports = {
   pins: {
     'data': Platform.pinType.OUTPUT
   },
-  includes: function(options){
-    return 'include libraries here';
+  includeFiles: [
+    'includes/neopixel.h',
+    'includes/neopixel.cpp'
+  ],
+  includes: function(){
+    return ['#include "neopixel.h"', '#include "neopixel.cpp"'];
   },
   preInit: function(options){
-    return 'return preInit code here';
+    return 
   },
   init: function(options){
     return 'init string';

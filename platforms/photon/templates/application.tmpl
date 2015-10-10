@@ -1,0 +1,17 @@
+#include "application.h"
+
+<%= includes %>
+
+SYSTEM_MODE(AUTOMATIC);
+
+<%= preInit %>
+
+void setup(){
+  <%= init %>
+}
+
+void loop(){
+  <%= loop %>
+}
+
+<%= customFunctions %>
