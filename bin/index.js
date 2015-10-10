@@ -2,7 +2,7 @@
 
 var chalk = require('chalk');
 
-var builder = require('../commands/build');
+var builder = require('../lib/build');
 
 var build_path = process.argv[2];
 

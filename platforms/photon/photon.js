@@ -49,28 +49,47 @@ var Photon = {
   },
   components: {
     neopixels: './components/neopixels/neopixels'
+  },
+  addComponents: function(build, platform, buildMap){
+    var pinsUsed = [];
+    build.components.forEach(function(component){
+        //check if component is supported
+        if(!Photon.components[component.type]){
+            console.error('Component file not found for type ' + component.type + '!');
+            process.exit(1);
+        }
+        //require in component definition
+        var componentDefinition = require(Photon.components[component.type]);
+        //check component pins
+        for(pin in componentDefinition.pins){
+            var buildPin = component.pins[pin];
+            if(componentDefinition.pins.hasOwnProperty(pin)){
+                // Does the needed pin exist in the build definition?
+                if(!buildPin){
+                    throw new Error('Pin ' + pin + ' not defined for ' + component.name + '!');
+                }
+                // Does the pin set in the build definition have the correct capability?
+                if(Photon.pins[buildPin].indexOf(componentDefinition.pins[pin]) === -1){
+                    throw new Error('Pin ' + buildPin + ' does not support pin type ' + componentDefinition.pins[pin] + '!');
+                }
+                // Is the pin already in use?
+                if(pinsUsed.indexOf(buildPin) !== -1){
+                    throw new Error('Pin ' + buildPin + 'called for in ' + component.name + ' already in use!');
+                }
+
+                //We're good to go on this pin!
+                pinsUsed.push(buildPin);
+            }
+        }
+        // all pins are clear and checked. We can add the component to the build.
+
+    });
+    //return registry of components
   }
 }
 
 function addComponent(component, map, options){
-    if(!Photon.components[component.type]){
-        console.error('Component file not found for type ' + component.type + '!');
-        process.exit(1);
-    }
 
-    // TODO: Get pin validation working.
-    var comp = require(Photon.components[component.type]);
-
-    // for(pin in component.pins){
-    //     var pinUsed = Photon.pins[component.pins[pin]];
-    //     if(!pinUsed){
-    //         console.error('Pin ' + pin + ' not found!');
-    //         process.exit(1);
-    //     }
-
-    //     if(Platform.pins[pinUsed].indexOf()
-
-    // }
     comp.includes(map, component);
     comp.preInit(map, component);
     comp.init(map, component);

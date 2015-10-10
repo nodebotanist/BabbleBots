@@ -11,7 +11,9 @@ module.exports = {
 		{
 			name: "neopixels",
 			type: "neopixels",
-			pins: ['D3'],
+			pins: {
+				data: 'D3'
+			},
 			options: {
 				length: 7,
 				type: 'WS2812',
