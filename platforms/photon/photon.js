@@ -7,23 +7,7 @@ var ejs = require('ejs');
 var Platform = require('../../lib/platform.js');
 
 var Photon = {
-    name: 'photon',
-  build: function(options){
-    var map = {
-        includes: '',
-        preInit: '',
-        init: '',
-        loop: '',
-        customFunctions: ''
-    }
-    //check each component exists
-    //check each pin used exists
-    //check each pin is used correctly
-    //add component to map
-    options.components.forEach(function(component){
-        addComponent(component, map, options);
-    })
-  },
+  name: 'photon',
   pins: {
     D0: [Platform.pinType.INPUT, Platform.pinType.OUTPUT, Platform.pinType.PWM, Platform.pinType.SERVO],
     D1: [Platform.pinType.INPUT, Platform.pinType.OUTPUT, Platform.pinType.PWM, Platform.pinType.SERVO],
@@ -61,7 +45,6 @@ var Photon = {
     });
   },
   compileTemplate: function(build){ 
-    console.log(build.map);
     var tmpl = fs.readFileSync(path.resolve(__dirname, 'templates/application.tmpl'));
     var template = ejs.compile(tmpl.toString());
 
