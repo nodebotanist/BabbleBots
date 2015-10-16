@@ -1,6 +1,7 @@
 #include "application.h"
-
-<%- includes %>
+<% includes.forEach(function(incl){ %>
+<%- incl %>
+<% }); %>
 
 SYSTEM_MODE(AUTOMATIC);
 

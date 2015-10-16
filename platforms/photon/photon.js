@@ -23,12 +23,6 @@ var Photon = {
     options.components.forEach(function(component){
         addComponent(component, map, options);
     })
-    fs.readFile(path.join(__dirname, 'templates/application.tmpl'), function(err, tmpl){
-        var appStream = fs.createWriteStream(path.join(process.cwd(), options.dest, 'app.ino'));
-        var template = ejs.compile(tmpl.toString());
-
-        appStream.write(template(map));
-    });
   },
   pins: {
     D0: [Platform.pinType.INPUT, Platform.pinType.OUTPUT, Platform.pinType.PWM, Platform.pinType.SERVO],
@@ -53,23 +47,28 @@ var Photon = {
   },
   addComponents: function(build){
     this.loadComponentDefinitions(build); //found on Platform
+    build.project.components.forEach(function(component){
+      component.definition.includeFiles.forEach(function(incl){
+        build.map.includeFiles.push(path.resolve(__dirname, 'components', component.name, incl));
+      });
+      component.definition.includes.forEach(function(incl){
+        build.map.includes.push(incl);
+      });
+      component.definition.preInit(build, component);
+      component.definition.init(build, component);
+      component.definition.loop(build, component);
+      component.definition.customFunctions(build, component);
+    });
+  },
+  compileTemplate: function(build){ 
+    console.log(build.map);
+    var tmpl = fs.readFileSync(path.resolve(__dirname, 'templates/application.tmpl'));
+    var template = ejs.compile(tmpl.toString());
 
-    build.components.forEach(function(component){
-        this.checkPins(build, component); // found on Platform
-        this.includeFiles(build, component); // found on Platform        
-    }, this);
+    return template(build.map);
   }
 }
 
 _.extend(Photon, Platform);
-
-function addComponent(component, map, options){
-
-    comp.includes(map, component);
-    comp.preInit(map, component);
-    comp.init(map, component);
-    comp.loop(map, component);
-    comp.customFunctions(map, component);
-}
 
 module.exports = Photon;

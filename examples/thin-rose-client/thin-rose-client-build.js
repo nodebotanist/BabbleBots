@@ -1,7 +1,7 @@
 module.exports = {
 	name: "rose-thin-client",
 	platform: "photon",
-	dest: './',
+	dest: '',
 	components: [
 		// {
 		// 	name: "rgb_sensor",
@@ -17,7 +17,7 @@ module.exports = {
 			options: {
 				length: 7,
 				type: 'WS2812',
-				sparkFunctions: ['pixels']
+				customFunctions: ['pixels']
 			}
 		}
 	]
