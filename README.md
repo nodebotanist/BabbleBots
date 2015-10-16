@@ -4,6 +4,18 @@ BabbleBots is meant to be a library that allows you to declaratively write a thi
 
 **WARNING:** the API and definitons for this can and will change at a moment's notice. Don't expect API stability for a bit-- I want to be very deliberate but at the same time I'm going to make mistakes and need to fix them.
 
+# How it Works
+
+Install: `npm install -g babblebots`
+
+Run: `babblebots ./path-to-my/build-file.js`
+
+Wanna know what goes in the build files? Check out [an example](https://github.com/nodebotanist/BabbleBots/blob/master/examples/thin-rose-client/thin-rose-client-build.js) or --the docs-- (coming soon-- check out the docs branch!)
+
+# Note
+
+This doesn't do much yet-- if you want a Particle Photon to have neopixels, this is your friend. I'm working on adding some other components before EmpireNode 2015-- namely a typical LED component, and typical sensor component.
+
 # Goals
 
 * Declare a JSON schema representing your bot, and BabbleBots spits out a language-appropriate file
@@ -13,10 +25,17 @@ BabbleBots is meant to be a library that allows you to declaratively write a thi
 
 ## Up Next
 
+* clean up-- add gulp build with jshint/jscs/beautifier
+* Docs. All the docs.
+* write a outputPin component and sensor component for Particle Photon
+* write default setPin function for Photon
+* UNIT TESTS. I failed at TDD but I need to put tests in.
 * write a spark upload task
 * write an actual CLI menu
 
 # Versioning
+
+0.2.1 -- I did a major refactor. Build, Platform, and Component now separate concerns much better than they did. Still a lot of cleaning to do.
 
 0.1.0 -- Okay. So, it works. For one component and one platform. Probably needs a ton of cleanup. BUT IT WORKS.
 
