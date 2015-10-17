@@ -5,14 +5,21 @@
 
 SYSTEM_MODE(AUTOMATIC);
 
-<%- preInit %>
-
+<% preInit.forEach(function(pre){ %>
+<%- pre %>
+<% }) %>
 void setup(){
-<%- init %>
+<% init.forEach(function(i){ %>
+  <%- i %>
+<% }) %>
 }
 
 void loop(){
-<%- loop %>
+<% loop.forEach(function(l){ %>
+  <%- l %>
+<% }) %>
 }
 
-<%- customFunctions %>
+<% customFunctions.forEach(function(custom){ %>
+<%- custom %>
+<% }) %>

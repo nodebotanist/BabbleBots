@@ -27,7 +27,8 @@ var Photon = {
     A7: [Platform.pinType.INPUT, Platform.pinType.OUTPUT, Platform.pinType.ANALOG, Platform.pinType.PWM, Platform.pinType.SERVO],
   },
   components: {
-    neopixels: 'components/neopixels/neopixels'
+    neopixels: 'components/neopixels/neopixels',
+    led: 'components/led/led'
   },
   addComponents: function(build){
     this.loadComponentDefinitions(build); //found on Platform
