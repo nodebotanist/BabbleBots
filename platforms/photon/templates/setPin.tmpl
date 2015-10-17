@@ -1,13 +1,27 @@
 int setPin(String cmd){
+    //convert ascii to integer
+    int pinNumber = cmd.charAt(1) - '0';
+    //Sanity check to see if the pin numbers are within limits
+    if (pinNumber< 0 || pinNumber >7) return -1;
+
+    else if (cmd.startsWith("A"))
+    {
+        pinNumber = pinNumber + 10;
+    }
+    
     char* myCopy = strtok(strdup(cmd), "|");
-    String pin = myCopy;
-    myCopy = strtok(NULL, ","); 
+    myCopy = strtok(NULL, "|"); 
     int value= atoi(myCopy);
+    
     if(value == 0 || value == 1){
-        digitalWrite(pin.toInt(), value);
+        pinMode(pinNumber, OUTPUT);
+        digitalWrite(pinNumber, value);
     } else {
-        analogWrite(pin.toInt(), value);
+        pinMode(pinNumber, OUTPUT);
+        analogWrite(pinNumber, value);
     }
     return 1;
+    
 }
+
 <% %>
