@@ -1,0 +1,13 @@
+int setPin(String cmd){
+    char* myCopy = strtok(strdup(cmd), "|");
+    String pin = myCopy;
+    myCopy = strtok(NULL, ","); 
+    int value= atoi(myCopy);
+    if(value == 0 || value == 1){
+        digitalWrite(pin.toInt(), value);
+    } else {
+        analogWrite(pin.toInt(), value);
+    }
+    return 1;
+}
+<% %>

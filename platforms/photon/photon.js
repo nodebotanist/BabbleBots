@@ -43,11 +43,16 @@ var Photon = {
       component.definition.loop(build, component);
       component.definition.customFunctions(build, component);
     });
+    if(build.project.options.setPinIncluded){
+      build.map.init.push('Particle.function("setPin", setPin);');
+      var tmpl = fs.readFileSync(path.resolve(__dirname, 'templates', 'setPin.tmpl'));
+      var template = ejs.compile(tmpl.toString());
+      build.map.customFunctions.push(template());
+    }
   },
   compileTemplate: function(build){ 
     var tmpl = fs.readFileSync(path.resolve(__dirname, 'templates/application.tmpl'));
     var template = ejs.compile(tmpl.toString());
-
     return template(build.map);
   }
 }
