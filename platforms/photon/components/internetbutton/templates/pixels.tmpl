@@ -1,0 +1,33 @@
+int pixels(String color){
+    int bar = color.indexOf('|');
+    String index = color.substring(0, bar);
+    long indexNum;
+    int stopPoint;
+    boolean all;
+    if(index == "all"){
+        indexNum = 0;
+        all = true;
+    } else {
+        indexNum = strtol(index, NULL, 16);
+        all = false;
+    }
+    
+    long red, green, blue;
+    
+    for(int i = bar + 1; i + 5 < color.length(); i+=6 ){
+        String newColor = color.substring(i, i + 2);
+        red = strtol(newColor, NULL, 16);
+        newColor = color.substring(i + 2, i + 4);
+        green = strtol(newColor, NULL, 16);
+        newColor = color.substring(i + 4, i + 6);
+        blue = strtol(newColor, NULL, 16);
+        if(all){
+            b.allLedsOn(red, green, blue);
+        } else {
+            b.ledOn(indexNum, red, green, blue);
+        }
+        indexNum++;
+    }
+    
+    return 1;
+}

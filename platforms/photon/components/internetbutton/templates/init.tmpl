@@ -1,0 +1,6 @@
+    Particle.variable("accelX", xValue);
+    Particle.variable("accelY", yValue);
+    Particle.variable("accelZ", zValue);
+    Particle.function("color", pixels);
+    b.begin(<% if(legacy){ %>1<% } %>);
+    b.allLedsOn(0,20,20);

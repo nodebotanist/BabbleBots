@@ -1,0 +1,25 @@
+    xValue = b.readX();
+    yValue = b.readY();
+    zValue = b.readZ();
+    
+    b.allLedsOff();
+    
+    if(b.buttonOn(1)){
+        Particle.publish("buttonpressup");
+        delay(<%= delay %>);
+    }
+    
+    if(b.buttonOn(2)){
+        Particle.publish("buttonpressright");
+        delay(<%= delay %>);
+    }
+    
+    if(b.buttonOn(3)){
+        Particle.publish("buttonpressdown");
+        delay(<%= delay %>);
+    }
+    
+    if(b.buttonOn(4)){
+        Particle.publish("buttonpressleft");
+        delay(<%= delay %>);
+    }
