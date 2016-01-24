@@ -10,16 +10,16 @@ var Neopixels = {
   pins: {
     'data': Platform.pinType.OUTPUT
   },
-  includeFiles: [
-    'includes/neopixel.h',
-    'includes/neopixel.cpp'
-  ],
+  includeFiles: {
+    'includes/neopixel.h': 'https://raw.githubusercontent.com/technobly/SparkCore-NeoPixel/master/firmware/neopixel.h',
+    'includes/neopixel.cpp': 'https://raw.githubusercontent.com/technobly/SparkCore-NeoPixel/master/firmware/neopixel.cpp': 
+  },
   includes:[
     '#include neopixel.h'
   ],
   compFunctions: {
     pixels: 'templates/pixels.tmpl'
-  },
+  }
   preInit: function(build, component){
     build.map.preInit.push('#define PIXEL_PIN ' + component.pins.data +
       '\n#define PIXEL_COUNT ' + component.options.length +
@@ -41,7 +41,7 @@ var Neopixels = {
           process.exit(1);
         }
 
-        build.map.init.push('\n\tSpark.function("' + func + '", ' + func + ');');
+        build.map.init.push('\n\tParticle.function("' + func + '", ' + func + ');');
 
         var result = fs.readFileSync(path.join(__dirname, Neopixels.compFunctions[func]));
         var tmpl = ejs.compile(result.toString());

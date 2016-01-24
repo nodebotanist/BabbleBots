@@ -27,16 +27,14 @@ int pixels(String color){
     long indexNum;
     int stopPoint;
     boolean all;
-    if(index === "all"){
+    if(index == "all"){
         indexNum = 0;
-        stopPoint = strip.length();
         all = true;
     } else {
         indexNum = strtol(index, NULL, 16);
-        stopPoint = 0;
         all = false;
     }
-
+    
     long red, green, blue;
     
     for(int i = bar + 1; i + 5 < color.length(); i+=6 ){
@@ -47,7 +45,7 @@ int pixels(String color){
         newColor = color.substring(i + 4, i + 6);
         blue = strtol(newColor, NULL, 16);
         if(all){
-            for(int led = 0, led < strip.length(); i++){
+            for(int led = 0; led < strip.numPixels(); led+=1){
                 strip.setPixelColor(led, strip.Color(red, green, blue));
             }
         } else {

@@ -27,12 +27,14 @@ var Photon = {
     A7: [Platform.pinType.INPUT, Platform.pinType.OUTPUT, Platform.pinType.ANALOG, Platform.pinType.PWM, Platform.pinType.SERVO],
   },
   components: {
-    neopixels: 'components/neopixels/neopixels'
+    neopixels: 'components/neopixels/neopixels',
+    internetbutton: 'components/internetbutton/internetbutton'
   },
   addComponents: function(build){
     this.loadComponentDefinitions(build); //found on Platform
     build.project.components.forEach(function(component){
-      component.definition.includeFiles.forEach(function(incl){
+      component.definition.fetchDeps(build, component);
+      _.forEach(component.definition.includeFiles, function(incl){
         build.map.includeFiles.push(path.resolve(__dirname, 'components', component.name, incl));
       });
       component.definition.includes.forEach(function(incl){
