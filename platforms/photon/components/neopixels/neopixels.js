@@ -11,8 +11,8 @@ var Neopixels = {
     'data': Platform.pinType.OUTPUT
   },
   includeFiles: {
-    'includes/neopixel.h': 'https://raw.githubusercontent.com/technobly/SparkCore-NeoPixel/master/firmware/neopixel.h',
-    'includes/neopixel.cpp': 'https://raw.githubusercontent.com/technobly/SparkCore-NeoPixel/master/firmware/neopixel.cpp': 
+    'neopixel.h': 'https://raw.githubusercontent.com/technobly/SparkCore-NeoPixel/master/firmware/neopixel.h',
+    'neopixel.cpp': 'https://raw.githubusercontent.com/technobly/SparkCore-NeoPixel/master/firmware/neopixel.cpp': 
   },
   includes:[
     '#include neopixel.h'

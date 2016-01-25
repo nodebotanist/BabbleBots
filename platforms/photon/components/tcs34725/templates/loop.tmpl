@@ -1,0 +1,19 @@
+    tcs.setInterrupt(false);      // turn on LED
+    
+    delay(60);  // takes 50ms to read 
+      
+    tcs.getRawData(&red, &green, &blue, &clear);
+    tcs.setInterrupt(true);  // turn off LED
+    
+    // Figure out some basic hex code for visualization
+    uint32_t sum = clear;
+    float r, g, bl;
+    
+    r = red; r /= sum;
+    g = green; g /= sum;
+    bl = blue; bl /= sum;
+    r *= 256; g *= 256; bl *= 256;    
+    
+    redValue = (int)r;
+    greenValue = (int)g;
+    blueValue = (int)bl;

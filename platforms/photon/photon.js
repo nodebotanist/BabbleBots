@@ -28,7 +28,8 @@ var Photon = {
   },
   components: {
     neopixels: 'components/neopixels/neopixels',
-    internetbutton: 'components/internetbutton/internetbutton'
+    internetbutton: 'components/internetbutton/internetbutton',
+    tcs34725: 'components/tcs34725/tcs34725'
   },
   addComponents: function(build){
     this.loadComponentDefinitions(build); //found on Platform
