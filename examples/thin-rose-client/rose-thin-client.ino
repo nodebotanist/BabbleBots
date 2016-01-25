@@ -5,23 +5,23 @@
 
 SYSTEM_MODE(AUTOMATIC);
 
-#define PIXEL_PIN D3
-#define PIXEL_COUNT 7
-#define PIXEL_TYPE WS2812
+#define PIXEL_PIN_NEOPIXELS1 D3
+#define PIXEL_COUNT_NEOPIXELS1 7
+#define PIXEL_TYPE_NEOPIXELS1 WS2812
 
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(PIXEL_COUNT, PIXEL_PIN, PIXEL_TYPE);
+Adafruit_NeoPixel strip_neopixels1 = Adafruit_NeoPixel(PIXEL_COUNT_NEOPIXELS1, PIXEL_PIN_NEOPIXELS1, PIXEL_TYPE_NEOPIXELS1);
 
 void setup(){
-	strip.begin();
-	strip.show();,
-	Spark.function("pixels", pixels);
+	strip_neopixels1.begin();
+	strip_neopixels1.show();,
+	Particle.function("pixels_neopixels1", pixels_neopixels1);
 }
 
 void loop(){
 
 }
 
-int pixels(String color){
+int pixels_neopixels1(String color){
     int bar = color.indexOf('|');
     String index = color.substring(0, bar);
     long indexNum;

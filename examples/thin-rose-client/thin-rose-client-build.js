@@ -9,7 +9,7 @@ module.exports = {
 		// 	//pins not needed because I2C
 		// },
 		{
-			name: "neopixels",
+			name: "neopixels1",
 			type: "neopixels",
 			pins: {
 				data: 'D3'
