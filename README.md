@@ -14,7 +14,12 @@ Wanna know what goes in the build files? Check out [an example](https://github.c
 
 # Note
 
-This doesn't do much yet-- if you want a Particle Photon to have neopixels, this is your friend. I'm working on adding some other components before EmpireNode 2015-- namely a typical LED component, and typical sensor component.
+Here are the components this supports:
+
+* Creating a setPin function that allows you to set any pin to any value via REST API
+* Neopixels, with function that allows you to set colors on neopixels strands via REST API
+* Internet Button, with function that allows you to set the neopixels colors and access accelerometer values and button push events via REST API
+* TCS34725 color sensor with variables that allow you to access red green and blue values via REST API
 
 # Goals
 
@@ -27,13 +32,17 @@ This doesn't do much yet-- if you want a Particle Photon to have neopixels, this
 
 * clean up-- add gulp build with jshint/jscs/beautifier
 * Docs. All the docs.
-* write a outputPin component and sensor component for Particle Photon
-* write default setPin function for Photon
 * UNIT TESTS. I failed at TDD but I need to put tests in.
 * write a spark upload task
 * write an actual CLI menu
 
 # Versioning
+
+0.2.61 -- docs push.
+
+0.2.6 -- minor bug fixes and added TCS34725 color sensor
+
+0.2.5 -- minor bug fixes and added Internet Button. Also, dependencies now fetch from GitHub instead of keeping files in BabbleBots repo.
 
 0.2.1 -- I did a major refactor. Build, Platform, and Component now separate concerns much better than they did. Still a lot of cleaning to do.
 
